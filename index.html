@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YasserFresas</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./views/images/aardbei-1000x1000.png">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+  <style>
+    /* Hacer que la imagen de la cabecera se ajuste bien en móviles */
+    #home img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Ajustes generales para que las secciones ocupen un ancho 100% en móviles */
+    section {
+      padding: 20px 0;
+    }
+
+    /* Ajuste del tamaño de las imágenes en los productos */
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    /* Ajustar el tamaño de la fuente en títulos en pantallas pequeñas */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+    }
+
+    /* Ajuste para la sección de mapa */
+    #map {
+      width: 100%;
+      height: 400px;
+    }
+
+    /* Ajustes de los iconos de contacto */
+    .fa-2x {
+      font-size: 2rem;
+    }
+
+    /* Ajustar el botón de WhatsApp en dispositivos pequeños */
+    .p-4.position-fixed {
+      bottom: 10px;
+      right: 10px;
+      width: 70px;
+      height: 70px;
+    }
+
+    /* Hacer que el mapa ocupe el 100% de su contenedor en móviles */
+    @media (max-width: 768px) {
+      #map {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">YasserFresas</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#home">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">Sobre Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#products">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </header>
+
+
+  <div id="home" class="d-flex justify-content-center align-items-center"
+    style="background-color: #8B0000; color: white; text-align: center; height: calc(100vh - 56px)">
+    <div class="container">
+      <div class="w-75 mx-auto d-block mb-3 rounded overflow-hidden">
+        <img src="./views/images/IMG_1056.jpg" class="img-fluid" alt="Logo Yasser">
+      </div>
+
+      <h1>Bienvenidos a YasserFresas</h1>
+      <p>Las fresas congeladas para jugos y batidas al por mayor y al detalle</p>
+      <a href="#products" class="btn" style="background-color: #1c7430; border: none;">Ver Productos</a>
+    </div>
+
+  </div>
+
+  <div class="py-5">
+    <div class="container d-flex flex-column gap-5" style="text-align: justify;">
+      <section id="about" class="bg-light p-4 rounded container">
+        <div class="row">
+          <div class="col-lg-7 d-flex flex-column justify-content-center px-4">
+            <h2>Sobre Nosotros</h2>
+            <p>En FresasDelicias nos dedicamos a cultivar las mejores fresas con los más altos
+              estándares de calidad. Nuestras fresas son 100% orgánicas y están disponibles para la
+              venta directa o a distribuidores.</p>
+          </div>
+          <div class="col-lg-5">
+            <img src="./views/images/IMG_1057.jpg" alt="Fresas" class="img-fluid rounded" style="object-fit: cover;">
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="bg-light py-5">
+        <div class="container">
+          <h2 class="text-center mb-4">Nuestros Productos</h2>
+          <div class="row">
+            <!-- Producto 1 -->
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <img src="./views/images/fresas-congeladas-la-sorpresa-de-las-agroexportaciones-al-ci-26270.jpg"
+                  class="card-img-top" alt="Fresas frescas">
+                <div class="card-body">
+                  <h5 class="card-title">Fresas congeladas</h5>
+                  <p class="card-text">Fresas frescas cosechadas el mismo día. Ideales para postres y consumo directo.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <img src="./views/images/450_1000.jpg" class="card-img-top" alt="Mermelada de fresas">
+                <div class="card-body">
+                  <h5 class="card-title">Fresas frescas</h5>
+                  <p class="card-text">Deliciosa mermelada de fresas orgánicas, hecha de manera artesanal.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <img src="./views/images/smoothie-de-fresa-y-pina_version_1670408069.jpg" class="card-img-top"
+                  alt="Fresas con chocolate">
+                <div class="card-body">
+                  <h5 class="card-title">Batidas de Fresa</h5>
+                  <p class="card-text">Fresas cubiertas con el mejor chocolate para una experiencia gourmet.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section">
+        <div id="map"></div>
+        <script>
+          var map = L.map('map').setView([18.4326111, -69.9733056], 15);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+          L.marker([18.4326111, -69.9733056]).addTo(map)
+            .bindPopup('Estoy aqui')
+            .openPopup();
+        </script>
+      </section>
+
+      <section>
+        <div class="container bg-light">
+          <div class="container p-5" id="contact">
+            <h3>Contáctanos</h3><br>
+            <form class="p-4">
+              <div class="row mb-3">
+                <div class="col-1">
+                  <i class="fa-regular fa-paper-plane fa-2x"></i>
+                </div>
+                <div class="col-11">
+                  <h5>Av Independencia, KM 10</h5>
+                  <p>Honduras del Norte, Santo Domingo</p>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-1">
+                  <i class="fa-brands fa-whatsapp fa-2x"></i>
+                </div>
+                <div class="col-11">
+                  <h5>WhatsApp</h5>
+                  <p>+1 809 123 4567</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-1">
+                  <i class="fab fa-instagram fa-2x"></i>
+                </div>
+
+                <div class="col-11">
+                  <h5 style="margin-bottom: 0;">
+                    <a href="https://www.instagram.com/yasserfresas_?igsh=MXd0YWl3c2NocWFscg==" target="_blank"
+                      class="text-decoration-none text-danger">
+                      @yasserfresas_
+                    </a>
+                  </h5>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- WhatsApp Button -->
+  <div class="p-4 position-fixed">
+    <a href="https://wa.me/+18091234567" class="btn btn-success rounded-circle p-3">
+      <i class="fa-brands fa-whatsapp fa-2x"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
